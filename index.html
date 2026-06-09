@@ -37,11 +37,53 @@
 
     /* ── HEADER ── */
     .cv-header {
-      background: #1a1a2e;
+      background: linear-gradient(270deg, #1a1a2e, #16213e, #0f3460, #1a1a2e, #2d1b4e, #1a1a2e);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
       color: #fff;
       padding: 2.75rem 0 2.25rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Subtle animated glow orbs behind content */
+    .cv-header::before,
+    .cv-header::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.18;
+      animation: orbFloat 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .cv-header::before {
+      width: 300px; height: 300px;
+      background: #e9c46a;
+      top: -80px; left: -60px;
+      animation-delay: 0s;
+    }
+    .cv-header::after {
+      width: 250px; height: 250px;
+      background: #4fc3f7;
+      bottom: -80px; right: -40px;
+      animation-delay: 4s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%       { transform: translate(20px, 15px) scale(1.1); }
+    }
+
+    /* Keep header content above the pseudo-elements */
+    .cv-header > * { position: relative; z-index: 1; }
 
     /* Profile photo (a) */
     .profile-photo {
@@ -296,7 +338,7 @@
       font-size: 0.75rem;
       color: #aaa;
       border-top: 1px solid #ddd;
-      background: #fae4c2;
+      background: #fff;
     }
 
     @media (max-width: 600px) {
@@ -325,8 +367,8 @@
 
   <!-- Contact links (e) — external -->
   <div class="header-contacts">
-    <a href="https://wa.me/6285885896951"><i class="bi bi-telephone"></i> +62 858-8589-6951</a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ankaabdullah.id@gmail.com"><i class="bi bi-envelope"></i> ankaabdullah.id@gmail.com</a>
+    <a href="https://wa.me/6285885896951" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> +62 858-8589-695</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ankaabdullah.id@gmail.com" target="_blank" rel="noopener"><i class="bi bi-envelope"></i> ankaabdullah.id@gmail.com</a>
     <a href="https://linkedin.com/in/ankaabdullah" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i> linkedin.com/in/ankaabdullah</a>
   </div>
 </header>
@@ -661,11 +703,11 @@
       <a class="cv-link" href="https://linkedin.com/in/ankaabdullah" target="_blank" rel="noopener">
         <i class="bi bi-linkedin"></i> linkedin.com/in/ankaabdullah
       </a>
-      <a class="cv-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=ankaabdullah.id@gmail.com">
+      <a class="cv-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=ankaabdullah.id@gmail.com" target="_blank" rel="noopener">
         <i class="bi bi-envelope"></i> ankaabdullah.id@gmail.com
       </a>
-      <a class="cv-link" href="https://wa.me/6285885896951">
-        <i class="bi bi-telephone"></i> +62 858-8589-6951
+      <a class="cv-link" href="https://wa.me/6285885896951" target="_blank" rel="noopener">
+        <i class="bi bi-whatsapp"></i> +62 858-8589-695
       </a>
       <!-- Internal links -->
       <a class="cv-link" href="#about">
